@@ -12,7 +12,7 @@ class TblBookController extends Controller
      */
     public function index()
     {
-        $booksData = TblBook::all();
+        $booksData = TblBook::latest()->paginate(8);
         return view('book.index', compact('booksData'));
     }
 
@@ -21,7 +21,7 @@ class TblBookController extends Controller
      */
     public function create()
     {
-        //
+        return  view('book.create');
     }
 
     /**
@@ -29,7 +29,7 @@ class TblBookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

@@ -10,7 +10,7 @@
                 <div class="relative flex w-84 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                     <div
                         class="relative mx-4 mt-4 h-80 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
-                        <img src="https://www.material-tailwind.com/img/team-3.jpg" alt="profile-picture" />
+                        <img src="{{ $b->cover_photo }}" alt="profile-picture" />
                     </div>
                     <div class="p-6 text-center">
                         <h4
@@ -36,6 +36,9 @@
 
                 </div>
             @endforeach
+        </div>
+        <div class="m-2">
+            {{ $booksData->links() }}
         </div>
     </div>
 

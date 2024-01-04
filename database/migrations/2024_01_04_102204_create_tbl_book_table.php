@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('publisher_id')->unsigned();
             $table->string('book_uniq_id')->unique();
             $table->string('book_name');
-            $table->string('cover_photo');
+            $table->string('cover_photo')->nullable();
             $table->integer('price');
             $table->timestamp('created_timetick')->default(DB::raw('CURRENT_TIMESTAMP'));
             // Add any other columns as needed
