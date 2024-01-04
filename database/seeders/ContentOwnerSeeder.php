@@ -24,6 +24,9 @@ class ContentOwnerSeeder extends Seeder
             ['name' => 'ရာျပည့္'],
             ['name' => 'ချစ်ဦးညို'],
             ['name' => 'အကြည်တော်'],
+            ['name' => 'user1'],
+            ['name' => 'user2'],
+            ['name' => 'user3'],
         ];
 
         DB::table('content_owners')->insert($data);

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
 
 Route::middleware([
@@ -24,7 +24,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect()->route('books.index');
     })->name('dashboard');
-    Route::resource('/', TblBookController::class);
+    Route::resource('/books', TblBookController::class);
 });

@@ -24,6 +24,9 @@ class PublisherSeeder extends Seeder
             ['id' => 8, 'name' => 'ရာပြည့်ဦးစိုးညွန့်'],
             ['id' => 9, 'name' => 'ချစ်ဦးညို'],
             ['id' => 10, 'name' => 'အကြည်တော်'],
+            ['id' => 11, 'name' => 'user1'],
+            ['id' => 12, 'name' => 'user2'],
+            ['id' => 13, 'name' => 'user3'],
         ];
 
         DB::table('publishers')->insert($publishers);
