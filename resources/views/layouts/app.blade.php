@@ -41,7 +41,20 @@
 
         <!-- Page Content -->
         <main>
-
+            <div class="container mx-auto px-40 mt-5">
+                @if (session()->has('success'))
+                    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 " role="alert">
+                        <span class="font-medium">{{ session()->get('success') }}</span>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    @foreach ($errors->all() as $e)
+                        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 " role="alert">
+                            <span class="font-medium">{{ $e }}</span>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
             @yield('content')
         </main>
     </div>

@@ -2,6 +2,8 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\ContentOwner;
+use App\Models\Publisher;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -25,6 +27,14 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
+
+        ContentOwner::create([
+            'name' => $input['name'],
+        ]);
+
+        Publisher::create([
+            'name' => $input['name'],
+        ]);
 
         return User::create([
             'name' => $input['name'],
