@@ -10,7 +10,11 @@
                 <div class="relative flex w-84 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                     <div
                         class="relative mx-4 mt-4 h-80 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
-                        <img src="{{ $b->cover_photo }}" alt="profile-picture" />
+                        @if (Str::startsWith($b->cover_photo, ['http://', 'https://']))
+                            <img src="{{ $b->cover_photo }}" alt="{{ $b->book_name }}" />
+                        @else
+                            <img src="{{ asset('images/' . $b->cover_photo) }}" alt="{{ $b->book_name }}" />
+                        @endif
                     </div>
                     <div class="p-6 text-center">
                         <h4
@@ -34,6 +38,18 @@
 
                     </div>
 
+                    @if (Auth::user()->name === $b->contentOwner->name)
+                        <div class=" pb-4 ps-4 flex">
+                            <a href="{{ route('books.edit', $b->id) }}"
+                                class=" me-4 bg-black text-white px-2 py-1 rounded-lg">Edit</a>
+                            <form action="{{ route('books.destroy', $b->id) }}" method="POST"
+                                onsubmit="return confirm(`Are you sure to delete?`)">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="DELETE" class=" bg-red-500 text-white px-2 py-1 rounded-lg">
+                            </form>
+                        </div>
+                    @endif
                 </div>
             @endforeach
         </div>

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ContentOwner extends Model
 {
     use HasFactory;
+    protected $table = 'content_owners';
+
+    protected $fillable = ['name'];
 }
